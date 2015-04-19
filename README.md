@@ -25,3 +25,4 @@ $ bundle install
 ```
 YAHOO_APPID - Yahoo Japan Application ID
 ```
+[Yahoo!デベロッパーネットワーク](http://developer.yahoo.co.jp/)
