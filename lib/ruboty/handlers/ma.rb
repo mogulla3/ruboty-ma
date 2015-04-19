@@ -21,7 +21,9 @@ module Ruboty
           req.params["sentence"] = message[:query]
           req.params["results"] = "ma"
         end
-        message.reply(res.body["ResultSet"]["ma_result"]["word_list"]["word"].map { |word| "#{word['surface']}(#{word['pos']})" }.join(" / "))
+        body = res.body["ResultSet"]["ma_result"]["word_list"]["word"] || []
+        body = [body] if body.class != Array
+        message.reply(body.map { |word| "#{word['surface']}(#{word['pos']})" }.join(" / "))
       rescue => e
         Ruboty.logger.error %(Error: #{e.class}: #{e.message}\n#{e.backtrace.join("\n")})
       end
